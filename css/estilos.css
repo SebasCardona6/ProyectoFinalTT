@@ -6,8 +6,22 @@ nav .navbar-brand {
   font-weight: bold;
 }
 
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 form {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+}
+
+footer h5 {
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
