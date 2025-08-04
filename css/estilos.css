@@ -1,0 +1,13 @@
+body {
+  background-color: #f8f9fa;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
