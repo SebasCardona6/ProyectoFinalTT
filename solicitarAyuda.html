@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Red de Apoyo Comunitario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <!-- Botón para abrir menú lateral -->
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">
+      ☰
+    </button>
+
+    <!-- Logo + Texto -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo.jpg" alt="Logo" class="me-2">
+      Red de Apoyo Comunitario
+    </a>
+
+    <!-- Menú principal -->
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link active" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú lateral izquierdo (offcanvas) -->
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuServicios">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Ayudas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled">
+      <li><i class="bi bi-arrow-right"></i> Donaciones</li>
+      <li><i class="bi bi-arrow-right"></i> Alimentos</li>
+      <li><i class="bi bi-arrow-right"></i> Medicamentos</li>
+      <li><i class="bi bi-arrow-right"></i> Mascotas</li>
+      <li><i class="bi bi-arrow-right"></i> Ubicaciones</li>
+    </ul>
+  </div>
+</div>
+  <!-- FORMULARIO -->
+  <div class="container my-5">
+    <h3 class="text-center mb-4">Solicitar ayuda</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <form id="formSolicitarAyuda">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre">
+          </div>
+          <div class="mb-3">
+            <label for="servicio" class="form-label">Servicio ofrecido:</label>
+            <input type="text" class="form-control" id="servicio">
+          </div>
+          <div class="mb-3">
+            <label for="ubicacion" class="form-label">Ubicación:</label>
+            <input type="text" class="form-control" id="ubicacion">
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea class="form-control" id="descripcion" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger">Enviar</button>
+        </form>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="img/ofrecer.jpg" class="img-fluid rounded" alt="Solicitar ayuda">
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+  <script src="script.js"></script>
+</body>
+</html>
