@@ -25,3 +25,8 @@ footer h5 {
 footer a:hover {
   text-decoration: underline;
 }
+
+.form-box {
+  background-color: #dcdcdc; /* Gris más oscuro */
+}
+
