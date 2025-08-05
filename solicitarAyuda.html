@@ -68,36 +68,77 @@
 </div>
 
   <!-- FORMULARIO -->
-  <div class="container my-5">
-    <h3 class="text-center mb-4">Solicitar ayuda</h3>
-    <div class="row">
-      <div class="col-md-6 form-box p-4 rounded shadow-sm">
-        <form id="formSolicitarAyuda">
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre">
-          </div>
-          <div class="mb-3">
-            <label for="servicio" class="form-label">Servicio ofrecido:</label>
-            <input type="text" class="form-control" id="servicio">
-          </div>
-          <div class="mb-3">
-            <label for="ubicacion" class="form-label">Ubicación:</label>
-            <input type="text" class="form-control" id="ubicacion">
-          </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="descripcion" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-danger">Enviar</button>
-        </form>
-      </div>
-      <div class="col-md-6 text-center">
-        <img src="img/img7.jpg" class="img-fluid rounded" alt="Solicitar ayuda">
-      </div>
+<div class="container my-5">
+  <h3 class="text-center mb-4">Solicitar Ayuda</h3>
+  <div class="row">
+    <div class="col-md-6 form-box p-4 rounded shadow-sm">
+      <form id="formSolicitarAyudaR">
+        <div class="mb-3">
+          <label for="nombreS" class="form-label">Nombre:</label>
+          <input type="text" class="form-control" id="nombreS">
+        </div>
+        <div class="mb-3">
+          <label for="cedulaS" class="form-label">Cedula:</label>
+          <input type="number" class="form-control" id="cedulaS">
+        </div>
+        <div class="mb-3">
+          <label for="servicioS" class="form-label">Servicio ofrecido:</label>
+          <select class="form-select" id="servicioS" required>
+            <option value="" disabled selected>Selecciona una ciudad</option>
+            <option value="Medicamentos">Medicamentos</option>
+            <option value="Alimentación">Alimentación</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="ubicacionS" class="form-label">Ubicación:</label>
+          <select class="form-select" id="ubicacionS" required>
+            <option value="" disabled selected>Selecciona una ciudad</option>
+            <option value="Bogota">Bogotá</option>
+            <option value="Cali">Cali</option>
+            <option value="Cartagena">Cartagena</option>
+            <option value="Rioacha">Riohacha</option>
+            <option value="Medellin">Medellín</option>
+            <option value="Barranquilla">Barranquilla</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="descripcionS" class="form-label">Descripción:</label>
+          <textarea class="form-control" id="descripcionS" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger">Enviar</button>
+      </form>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="img/img7.jpg" class="img-fluid rounded" alt="Solicitar ayuda">
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+
+<script>
+  const form = document.getElementById('formSolicitarAyudaR');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const solicitud = {
+      nombreS: document.getElementById('nombreS').value,
+      cedulaS: document.getElementById('cedulaS').value,
+      servicioS: document.getElementById('servicioS').value,
+      ubicacionS: document.getElementById('ubicacionS').value,
+      descripcionS: document.getElementById('descripcionS').value
+    };
+
+    let solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
+    solicitudes.push(solicitud);
+    localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+
+    alert('Solicitud de ayuda guardada correctamente');
+    form.reset();
+    location.reload(); // Refresca para mostrarla
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <footer class="bg-danger text-white mt-5">
   <div class="container py-4">

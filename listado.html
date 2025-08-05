@@ -6,8 +6,9 @@
   <title>Red de Apoyo Comunitario</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/estilos.css" rel="stylesheet">
-  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
 
 <!-- Navbar -->
@@ -19,7 +20,7 @@
     </button>
 
     <!-- Logo + Texto -->
-    <a class="navbar-brand d-flex align-items-center" href="#">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="img/logo.jpg" alt="Logo" class="me-2">
       Red de Apoyo Comunitario
     </a>
@@ -28,9 +29,9 @@
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link active" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
         <li class="nav-item"><a class="nav-link" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
-        <li class="nav-item"><a class="nav-link" href="listado.html">Lista de solicitudes</a></li>
+        <li class="nav-item"><a class="nav-link active" href="listado.html">Lista de solicitudes</a></li>
       </ul>
     </div>
   </div>
@@ -68,81 +69,85 @@
   </div>
 </div>
 
+<h1>Listado de Ayudas Comunitarias</h1>
 
-  <!-- FORMULARIO -->
+<!-- SECCIÓN DE AYUDAS OFRECIDAS -->
+<section>
+  <h2>Ayudas Ofrecidas</h2>
+  <div id="listadoAyudas"></div>
+  <button onclick="borrarAyudas()">Borrar todas las ayudas ofrecidas</button>
+</section>
 
-<div class="container my-5">
-  <h3 class="text-center mb-4">Ofrecer Ayuda</h3>
-  <div class="row">
-    <div class="col-md-6 form-box p-4 rounded shadow-sm">
-      <form id="formOfrecerAyudaR">
-        <div class="mb-3">
-          <label for="nombreF" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombreF">
-        </div>
-        <div class="mb-3">
-          <label for="cedulaF" class="form-label">Cedula:</label>
-          <input type="number" class="form-control" id="cedulaF">
-        </div>
-        <div class="mb-3">
-          <label for="servicioF" class="form-label">Servicio ofrecido:</label>
-          <select class="form-select" id="servicioF" required>
-            <option value="" disabled selected>Selecciona una ciudad</option>
-            <option value="Medicamentos">Medicamentos</option>
-            <option value="Alimentación">Alimentación</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="ubicacionF" class="form-label">Ubicación:</label>
-          <select class="form-select" id="ubicacionF" required>
-            <option value="" disabled selected>Selecciona una ciudad</option>
-            <option value="Bogota">Bogotá</option>
-            <option value="Cali">Cali</option>
-            <option value="Cartagena">Cartagena</option>
-            <option value="Rioacha">Riohacha</option>
-            <option value="Medellin">Medellín</option>
-            <option value="Barranquilla">Barranquilla</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="descripcionf" class="form-label">Descripción:</label>
-          <textarea class="form-control" id="descripcionF" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-danger">Enviar</button>
-      </form>
-    </div>
-    <div class="col-md-6 text-center">
-      <img src="img/img8.jpg" class="img-fluid rounded" alt="Ofrecer ayuda">
-    </div>
-  </div>
-</div>
+<hr>
+
+<!-- SECCIÓN DE SOLICITUDES -->
+<section>
+  <h2>Solicitudes de Ayuda</h2>
+  <div id="listadoSolicitudes"></div>
+  <button onclick="borrarSolicitudes()">Borrar todas las solicitudes</button>
+</section>
 
 <script>
-  const form = document.getElementById('formOfrecerAyudaR');
+  // Mostrar AYUDAS OFRECIDAS
+  const listadoAyudas = document.getElementById('listadoAyudas');
+  const ayudas = JSON.parse(localStorage.getItem('ayudas')) || [];
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  if (ayudas.length === 0) {
+    listadoAyudas.innerHTML = '<p>No hay ayudas ofrecidas registradas aún.</p>';
+  } else {
+    ayudas.forEach((ayuda, index) => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+          <h3>Ayuda #${index + 1}</h3>
+          <p><strong>Nombre:</strong> ${ayuda.nombreF}</p>
+          <p><strong>Cedula:</strong> ${ayuda.cedulaF}</p>
+          <p><strong>Servicio:</strong> ${ayuda.servicioF}</p>
+          <p><strong>Ubicación:</strong> ${ayuda.ubicacionF}</p>
+          <p><strong>Descripción:</strong> ${ayuda.descripcionF}</p>
+          <hr>
+        `;
+      listadoAyudas.appendChild(div);
+    });
+  }
 
-    const ayuda = {
-      nombreF: document.getElementById('nombreF').value,
-      cedulaF: document.getElementById('cedulaF').value,
-      servicioF: document.getElementById('servicioF').value,
-      ubicacionF: document.getElementById('ubicacionF').value,
-      descripcionF: document.getElementById('descripcionF').value
-    };
+  // MOSTRAR SOLICITUDES
+  const listadoSolicitudes = document.getElementById('listadoSolicitudes');
+  const solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
 
-    // Obtener el array actual o iniciar uno nuevo
-    let ayudas = JSON.parse(localStorage.getItem('ayudas')) || [];
-    ayudas.push(ayuda);
-    localStorage.setItem('ayudas', JSON.stringify(ayudas));
+  if (solicitudes.length === 0) {
+    listadoSolicitudes.innerHTML = '<p>No hay solicitudes registradas aún.</p>';
+  } else {
+    solicitudes.forEach((solicitud, index) => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <h3>Solicitud #${index + 1}</h3>
+        <p><strong>Nombre:</strong> ${solicitud.nombreS}</p>
+        <p><strong>Cédula:</strong> ${solicitud.cedulaS}</p>
+        <p><strong>Servicio:</strong> ${solicitud.servicioS}</p>
+        <p><strong>Ubicación:</strong> ${solicitud.ubicacionS}</p>
+        <p><strong>Descripción:</strong> ${solicitud.descripcionS}</p>
+        <hr>
+      `;
+      listadoSolicitudes.appendChild(div);
+    });
+  }
 
-    alert('Ayuda guardada correctamente');
-    form.reset();
-  });
+  // Funciones para borrar
+  function borrarAyudas() {
+    if (confirm('¿Estás seguro de que deseas borrar todas las ayudas ofrecidas?')) {
+      localStorage.removeItem('ayudas');
+      location.reload();
+    }
+  }
+
+  function borrarSolicitudes() {
+    if (confirm('¿Estás seguro de que deseas borrar todas las solicitudes?')) {
+      localStorage.removeItem('solicitudes');
+      location.reload();
+    }
+  }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Footer -->
 <footer class="bg-danger text-white mt-5">
   <div class="container py-4">
     <div class="row">
@@ -155,7 +160,7 @@
       <div class="col-md-4 mb-3">
         <h5>Contacto</h5>
         <p>Email: contacto@apoyocomunitario.org</p>
-        <p>Tel: +57 302 293 8101/p>
+        <p>Tel: +57 302 293 8101</p>
       </div>
 
       <div class="col-md-4 mb-3">
@@ -169,6 +174,6 @@
     <p class="text-center mb-0">© 2025 Red de Apoyo Comunitario. Talento Tech. Todos los derechos reservados.</p>
   </div>
 </footer>
-  <script src="script.js"></script>
+
 </body>
 </html>
