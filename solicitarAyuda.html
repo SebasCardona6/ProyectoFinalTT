@@ -20,7 +20,7 @@
     <!-- Logo + Texto -->
     <a class="navbar-brand d-flex align-items-center" href="#">
       <img src="img/logo.jpg" alt="Logo" class="me-2">
-      Red de Apoyo Comunitario
+      UnidosXTi - Red de Apoyo Comunitario
     </a>
 
     <!-- Menú principal -->
@@ -102,6 +102,12 @@
           </select>
         </div>
         <div class="mb-3">
+
+        <div class="mb-3">
+          <label for="fechaS" class="form-label">Fecha en la que deseas recibir la ayuda:</label>
+          <input type="date" class="form-control" id="fechaS" required min="2025-01-01" max="2025-12-31">
+        </div>
+      
           <label for="descripcionS" class="form-label">Descripción:</label>
           <textarea class="form-control" id="descripcionS" rows="4"></textarea>
         </div>
@@ -120,13 +126,14 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const solicitud = {
-      nombreS: document.getElementById('nombreS').value,
-      cedulaS: document.getElementById('cedulaS').value,
-      servicioS: document.getElementById('servicioS').value,
-      ubicacionS: document.getElementById('ubicacionS').value,
-      descripcionS: document.getElementById('descripcionS').value
-    };
+  const solicitud = {
+    nombreS: document.getElementById('nombreS').value,
+    cedulaS: document.getElementById('cedulaS').value,
+    servicioS: document.getElementById('servicioS').value,
+    ubicacionS: document.getElementById('ubicacionS').value,
+    descripcionS: document.getElementById('descripcionS').value,
+    fechaS: document.getElementById('fechaS').value 
+  };
 
     let solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
     solicitudes.push(solicitud);

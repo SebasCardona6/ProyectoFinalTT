@@ -21,7 +21,7 @@
     <!-- Logo + Texto -->
     <a class="navbar-brand d-flex align-items-center" href="#">
       <img src="img/logo.jpg" alt="Logo" class="me-2">
-      Red de Apoyo Comunitario
+      UnidosXTi - Red de Apoyo Comunitario
     </a>
 
     <!-- Menú principal -->
@@ -104,6 +104,12 @@
             <option value="Barranquilla">Barranquilla</option>
           </select>
         </div>
+
+        <div class="mb-3">
+          <label for="fechaF" class="form-label">Fecha en la que deseas realizar la ayuda:</label>
+          <input type="date" class="form-control" id="fechaF" required min="2025-08-04" max="2025-12-31">
+        </div>
+
         <div class="mb-3">
           <label for="descripcionf" class="form-label">Descripción:</label>
           <textarea class="form-control" id="descripcionF" rows="4"></textarea>
@@ -122,14 +128,15 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
-    const ayuda = {
-      nombreF: document.getElementById('nombreF').value,
-      cedulaF: document.getElementById('cedulaF').value,
-      servicioF: document.getElementById('servicioF').value,
-      ubicacionF: document.getElementById('ubicacionF').value,
-      descripcionF: document.getElementById('descripcionF').value
-    };
+  
+  const ayuda = {
+    nombreF: document.getElementById('nombreF').value,
+    cedulaF: document.getElementById('cedulaF').value,
+    servicioF: document.getElementById('servicioF').value,
+    ubicacionF: document.getElementById('ubicacionF').value,
+    descripcionF: document.getElementById('descripcionF').value,
+    fechaF: document.getElementById('fechaF').value 
+};
 
     // Obtener el array actual o iniciar uno nuevo
     let ayudas = JSON.parse(localStorage.getItem('ayudas')) || [];
