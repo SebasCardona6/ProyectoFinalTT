@@ -15,3 +15,42 @@ document.addEventListener('DOMContentLoaded', () => {
     form2.addEventListener('submit', e => handleSubmit(e, 'solicitar'));
   }
 });
+
+/* SCRIPT PARA DONACIONES */
+
+document.querySelectorAll('.monto-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+    document.querySelectorAll('.monto-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    });
+});
+
+const btnTarjeta = document.getElementById('btnTarjeta');
+const btnPaypal = document.getElementById('btnPaypal');
+const tarjetaCampos = [
+    document.getElementById('numTarjeta'),
+    document.getElementById('nombreTarjeta'),
+    document.getElementById('vencimientoTarjeta'),
+    document.getElementById('cvvTarjeta')
+];
+const correoPaypal = document.getElementById('correoPaypal');
+
+btnTarjeta.addEventListener('click', function() {
+    btnTarjeta.classList.add('active');
+    btnPaypal.classList.remove('active');
+    tarjetaCampos.forEach(campo => campo.disabled = false);
+    correoPaypal.disabled = true;
+});
+
+btnPaypal.addEventListener('click', function() {
+    btnPaypal.classList.add('active');
+    btnTarjeta.classList.remove('active');
+    tarjetaCampos.forEach(campo => campo.disabled = true);
+    correoPaypal.disabled = false;
+});
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('mensajeDonacion').style.display = 'block';
+    this.reset();
+});

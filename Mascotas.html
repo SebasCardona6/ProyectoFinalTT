@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ubicaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        .navbar-brand img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+    <!-- Botón para abrir menú lateral -->
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">
+        ☰
+    </button>
+    <!-- Logo + Texto -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="img/logo.jpg" alt="Logo" class="me-2">
+        Red de Apoyo Comunitario
+    </a>
+    <!-- Menú principal -->
+    <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<!-- Menú lateral izquierdo (offcanvas) -->
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuServicios">
+    <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Ayudas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+    <ul class="list-unstyled">
+        <li><i class="bi bi-arrow-right"></i> <a href=Donaciones.html>Donaciones</a></li>
+        <li><i class="bi bi-arrow-right"></i> Alimentos</li>
+        <li><i class="bi bi-arrow-right"></i>  Medicamentos</li>
+        <li><i class="bi bi-arrow-right"></i> <a href=Mascotas.html>Mascotas </a> </li>
+        <li><i class="bi bi-arrow-right"></i> <a href=Ubicaciones.html> Ubicaciones </a> </li>
+    </ul>
+    </div>
+</div>
+<div class="container my-5">
+    <h2 class="text-center fw-bold mb-2" style="letter-spacing:1px; font-size:3rem;">Conoce a nuestras mascotas</h2>
+    <p class="text-center text-muted mb-4" style="font-size:2rem;"> Tenemos diversos compañeros que podrán acompañarte, protegerte y cuidarte...</p>
+    <div class="row g-4">
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota1.jpg" class="img-fluid rounded" alt="Mascota 1">
+            <div class="hover-text"> Los golden retrievers son perros populares como mascotas debido a su naturaleza amigable, inteligente y fácil de entrenar </div>
+
+        </div>
+        <div class="col-md-4 col-12 img-hover">
+
+            <img src="img/mascota2.jpg" class="img-fluid rounded" alt="Mascota 2">
+            <div class="hover-text"> Pastor alemán: Conocido por su valentía, inteligencia y capacidad de aprendizaje, lo que facilita su entrenamiento como perro guardián.</div>
+
+        </div>
+        <div class="col-md-4 col-12  img img-hover">
+
+            <img src="img/mascota3.jpg" class="img-fluid rounded" alt="Mascota 3">
+            <div class="hover-text"> Doberman: Atlético, ágil y con un ladrido intimidante, el Doberman es una excelente opción para la protección del hogar.</div>
+
+        </div>
+        <div class="col-md-4 col-12  img img-hover">
+
+            <img src="img/mascota4.jpg" class="img-fluid rounded" alt="Mascota 4">
+            <div class="hover-text"> Rottweiler: Una raza poderosa con un fuerte instinto protector, a menudo asociada con la protección de ganado y propiedades.</div>
+
+        </div>
+        <div class="col-md-4 col-12  img img-hover">
+
+            <img src="img/mascota5.jpg" class="img-fluid rounded" alt="Mascota 5">
+            <div class="hover-text"> Bullmastiff: Fuerte, corajudo y leal, el Bullmastiff es un guardián implacable con un instinto protector innato.</div>
+
+        </div>
+        <div class="col-md-4 col-12  img img-hover">
+
+            <img src="img/mascota6.jpg" class="img-fluid rounded" alt="Mascota 6">
+            <div class="hover-text">Gran Danés: Aunque cariñoso con su familia, su gran tamaño y fuerza intimidan a los extraños, lo que lo convierte en un excelente perro guardián.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover ">
+
+            <img src="img/mascota7.jpg" class="img-fluid rounded" alt="Mascota 7">
+            <div class="hover-text"> Boxer: Un perro juguetón y enérgico con un fuerte instinto protector, que puede adaptarse a diferentes tamaños de hogar.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota8.jpg" class="img-fluid rounded" alt="Mascota 8">
+            <div class="hover-text">Boyero de Berna: Aunque no es tan comúnmente asociado con la guardia, esta raza tiene un instinto protector desde sus orígenes como perro de protección.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota9.jpg" class="img-fluid rounded" alt="Mascota 9">
+            <div class="hover-text"> San Bernardo: Conocido por su tamaño y naturaleza gentil, el San Bernardo también posee un fuerte instinto protector y es leal a su familia.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota10.jpg" class="img-fluid rounded" alt="Mascota 10">
+            <div class="hover-text"> Maine Coon: Conocido por su gran tamaño y carácter dócil, es ideal para familias.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota11.jpg" class="img-fluid rounded" alt="Mascota 11">
+            <div class="hover-text"> Ragdoll: Relajado y cariñoso, se lleva bien con otros animales y niños.</div>
+
+        </div>
+        <div class="col-md-4 col-12 img img-hover">
+
+            <img src="img/mascota12.jpg" class="img-fluid rounded" alt="Mascota 12">
+            <div class="hover-text"> Siamés: Social y vocal, disfruta de la interacción humana y la compañía.</div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>
