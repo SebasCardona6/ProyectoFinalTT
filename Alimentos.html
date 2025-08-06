@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alimentos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .categoria {
+      background-color: #f8f9fa;
+      border-left: 6px solid #dc3545;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .categoria h3 {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .card img {
+      height: 160px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">☰</button>
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo.jpg" alt="Logo" class="me-2">
+      Red de Apoyo Comunitario
+    </a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú lateral -->
+<div class="offcanvas offcanvas-start bg-danger text-white" tabindex="-1" id="menuServicios">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Ayudas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled fs-5">
+      <li class="mb-2"><a class="nav-link d-inline text-white" href="Donaciones.html">Donaciones</a></li>
+      <li class="mb-2"><a class="nav-link d-inline text-white fw-bold" href="Alimentos.html">Alimentos</a></li>
+      <li class="mb-2"><a class="nav-link d-inline text-white" href="Medicamentos.html">Medicamentos</a></li>
+      <li class="mb-2"><a class="nav-link d-inline text-white" href="Mascotas.html">Mascotas</a></li>
+      <li class="mb-2"><a class="nav-link d-inline text-white" href="Ubicaciones.html">Ubicaciones</a></li>
+      <li class="mb-2"><a class="nav-link d-inline text-white" href="Analisis.html">Análisis Gráfico</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Encabezado -->
+<div class="container my-5 text-center">
+  <h2 class="fw-bold mb-3" style="font-size:2.8rem; letter-spacing:1px;">
+    Alimentos para nuestra comunidad
+  </h2>
+  <p class="text-muted fs-5">
+    Aquí encontrarás una lista de alimentos básicos que puedes ofrecer o solicitar.
+  </p>
+</div>
+
+<div class="container">
+
+  <!-- Categoría 1: Granos y Cereales -->
+  <div class="categoria">
+    <h3>🌾 Granos y Cereales</h3>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/arroz.webp" class="card-img-top" alt="Arroz">
+          <div class="card-body">
+            <h5 class="fw-bold">Arroz</h5>
+            <p class="small text-muted">Básico en la dieta diaria, fuente de energía accesible y versátil.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/lentejas.webp" class="card-img-top" alt="Lentejas">
+          <div class="card-body">
+            <h5 class="fw-bold">Lentejas</h5>
+            <p class="small text-muted">Proteína vegetal económica y nutritiva, rica en fibra y hierro.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/pasta.jpg" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="fw-bold">Pasta</h5>
+            <p class="small text-muted">Ideal para comidas rápidas y nutritivas, combina bien con vegetales y salsas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoría 2: Lácteos -->
+  <div class="categoria">
+    <h3>🥛 Lácteos</h3>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/lechepolvo.webp" class="card-img-top" alt="Leche en polvo">
+          <div class="card-body">
+            <h5 class="fw-bold">Leche en polvo</h5>
+            <p class="small text-muted">Fuente de calcio y proteínas, esencial para el desarrollo infantil.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/queso.jpg" class="card-img-top" alt="Queso">
+          <div class="card-body">
+            <h5 class="fw-bold">Queso</h5>
+            <p class="small text-muted">Delicioso y nutritivo, rico en calcio y proteínas de alta calidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoría 3: Frutas y Verduras -->
+  <div class="categoria">
+    <h3>🍎 Frutas y Verduras</h3>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/frutafresca.jpg" class="card-img-top" alt="Frutas frescas">
+          <div class="card-body">
+            <h5 class="fw-bold">Frutas frescas</h5>
+            <p class="small text-muted">Ricas en vitaminas y antioxidantes para fortalecer el sistema inmune.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/verdura.jpeg" class="card-img-top" alt="Verduras frescas">
+          <div class="card-body">
+            <h5 class="fw-bold">Verduras frescas</h5>
+            <p class="small text-muted">Básicas para una dieta equilibrada, llenas de fibra y nutrientes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoría 4: Proteínas -->
+  <div class="categoria">
+    <h3>🍗 Proteínas</h3>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/huevo.jpeg" class="card-img-top" alt="Huevos">
+          <div class="card-body">
+            <h5 class="fw-bold">Huevos</h5>
+            <p class="small text-muted">Proteína completa y asequible para toda la familia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoría 5: Otros básicos -->
+  <div class="categoria">
+    <h3>🍬 Otros básicos</h3>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/aceitev.jpeg" class="card-img-top" alt="Aceite vegetal">
+          <div class="card-body">
+            <h5 class="fw-bold">Aceite vegetal</h5>
+            <p class="small text-muted">Fundamental para cocinar y preparar alimentos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img src="img/azucar.jpeg" class="card-img-top" alt="Azúcar">
+          <div class="card-body">
+            <h5 class="fw-bold">Azúcar</h5>
+            <p class="small text-muted">Endulzante común y fuente rápida de energía.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón final -->
+<div class="text-center mt-4">
+  <a href="solicitarAyuda.html" class="btn btn-danger ">
+    📦 Solicitar ayuda alimentaria
+  </a>
+  <a href="ofrecerAyuda.html" class="btn btn-success">
+    🤝 Ofrecer alimentos
+  </a>
+</div>
+
+<!-- Pie de página-->
+<footer class="bg-danger text-white mt-5">
+  <div class="container py-4">
+    <div class="row">
+
+      <div class="col-md-4 mb-3">
+        <h5>Quiénes somos</h5>
+        <p>Somos una red de apoyo comunitario que busca brindar ayuda a quienes más lo necesitan, a través de la solidaridad y el trabajo colectivo.</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Contacto</h5>
+        <p>Email: contacto@apoyocomunitario.org</p>
+        <p>Tel: +57 302 293 8101</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Síguenos</h5>
+        <a href="https://www.facebook.com" class="text-white me-3 text-decoration-none">Facebook</a>
+        <a href="https://www.instagram.com" class="text-white me-3 text-decoration-none">Instagram</a>
+        <a href="https://x.com/?lang=es" class="text-white text-decoration-none">Twitter</a>
+      </div>
+    </div>
+    <hr class="border-light">
+    <p class="text-center mb-0">© 2025 Red de Apoyo Comunitario. Talento Tech. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

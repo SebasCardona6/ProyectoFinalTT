@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análisis Gráfico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .grafico-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .grafico-card h2 {
+      font-size: 1.4rem;
+      color: #dc3545;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .grafico-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">☰</button>
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo.jpg" alt="Logo" class="me-2">
+      Red de Apoyo Comunitario
+    </a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú lateral -->
+<div class="offcanvas offcanvas-start bg-danger text-white" tabindex="-1" id="menuServicios">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Ayudas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled fs-5">
+      <li class="mb-2"><a class="nav-link text-white" href="Donaciones.html">Donaciones</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Alimentos.html">Alimentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Medicamentos.html">Medicamentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Mascotas.html">Mascotas</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Ubicaciones.html">Ubicaciones</a></li>
+      <li class="mb-2"><a class="nav-link fw-bold text-white" href="Analisis.html">Análisis Gráfico</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Contenido -->
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- Gráfico de Barras -->
+    <div class="col-md-6">
+      <div class="grafico-card">
+        <h2>Frecuencia por Ubicación</h2>
+        <p>Comparación de ayudas y solicitudes según la ubicación registrada.</p>
+        <canvas id="graficoUbicaciones"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico de Pastel -->
+    <div class="col-md-6">
+      <div class="grafico-card">
+        <h2>Frecuencia de Servicios</h2>
+        <p>Servicios más ofrecidos y solicitados por la comunidad.</p>
+        <canvas id="graficoServicios"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico de Líneas -->
+    <div class="col-md-6">
+      <div class="grafico-card">
+        <h2>Frecuencia por Mes</h2>
+        <p>Evolución mensual de las ayudas y solicitudes registradas.</p>
+        <canvas id="graficoMeses"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico Radar -->
+    <div class="col-md-6">
+      <div class="grafico-card">
+        <h2>Ayudas vs Solicitudes</h2>
+        <p>Comparativa general entre el número total de ayudas y solicitudes.</p>
+        <canvas id="graficoRadar"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Librerías -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+/* ======== DATOS GENERALES ======== */
+const datosAyudas = JSON.parse(localStorage.getItem('ayudas')) || [];
+const datosSolicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
+
+/* ======== GRAFICO DE BARRAS ======== */
+const ubicacionesValidas = ["Bogota","Cali","Cartagena","Rioacha","Medellin","Barranquilla"];
+const conteoUbicaciones = {};
+ubicacionesValidas.forEach(c => conteoUbicaciones[c] = 0);
+datosAyudas.forEach(a => { if (ubicacionesValidas.includes(a.ubicacionF)) conteoUbicaciones[a.ubicacionF]++; });
+datosSolicitudes.forEach(s => { if (ubicacionesValidas.includes(s.ubicacionS)) conteoUbicaciones[s.ubicacionS]++; });
+new Chart(document.getElementById('graficoUbicaciones'), {
+  type: 'bar',
+  data: {
+    labels: Object.keys(conteoUbicaciones),
+    datasets: [{
+      label: 'Cantidad total por ubicación',
+      data: Object.values(conteoUbicaciones),
+      backgroundColor: 'rgba(99,219,255,0.5)',
+      borderColor: 'rgb(99,133,255)',
+      borderWidth: 1
+    }]
+  },
+  options: { scales: { y: { beginAtZero: true } } }
+});
+
+/* ======== GRAFICO DE PASTEL ======== */
+const conteoServicios = {};
+function contarServicio(s) {
+  const serv = s?.trim().toLowerCase();
+  if (serv) conteoServicios[serv] = (conteoServicios[serv] || 0) + 1;
+}
+datosAyudas.forEach(a => contarServicio(a.servicioF));
+datosSolicitudes.forEach(s => contarServicio(s.servicioS));
+const colores = Object.keys(conteoServicios).map(() => `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`);
+new Chart(document.getElementById('graficoServicios'), {
+  type: 'doughnut',
+  data: {
+    labels: Object.keys(conteoServicios),
+    datasets: [{
+      label: 'Frecuencia de Servicios',
+      data: Object.values(conteoServicios),
+      backgroundColor: colores
+    }]
+  }
+});
+
+/* ======== GRAFICO DE LINEAS ======== */
+function obtenerNombreMes(fechaStr) {
+  const meses = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+  const f = new Date(fechaStr);
+  return isNaN(f) ? null : meses[f.getMonth()];
+}
+const conteoMeses = {};
+[...datosAyudas, ...datosSolicitudes].forEach(e => {
+  const mes = obtenerNombreMes(e.fechaF || e.fechaS);
+  if (mes) conteoMeses[mes] = (conteoMeses[mes] || 0) + 1;
+});
+const ordenMeses = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+const etiquetasMeses = ordenMeses.filter(m => conteoMeses[m]);
+new Chart(document.getElementById('graficoMeses'), {
+  type: 'line',
+  data: {
+    labels: etiquetasMeses,
+    datasets: [{
+      label: 'Formularios por mes',
+      data: etiquetasMeses.map(m => conteoMeses[m]),
+      fill: false,
+      borderColor: 'rgb(64,197,197)',
+      tension: 0.1
+    }]
+  }
+});
+
+/* ======== GRAFICO RADAR (Comparativa por Ciudad) ======== */
+const conteoAyudasRadar = {};
+const conteoSolicitudesRadar = {};
+ubicacionesValidas.forEach(ciudad => {
+  conteoAyudasRadar[ciudad] = 0;
+  conteoSolicitudesRadar[ciudad] = 0;
+});
+datosAyudas.forEach(a => {
+  if (ubicacionesValidas.includes(a.ubicacionF)) conteoAyudasRadar[a.ubicacionF]++;
+});
+datosSolicitudes.forEach(s => {
+  if (ubicacionesValidas.includes(s.ubicacionS)) conteoSolicitudesRadar[s.ubicacionS]++;
+});
+new Chart(document.getElementById('graficoRadar'), {
+  type: 'radar',
+  data: {
+    labels: ubicacionesValidas,
+    datasets: [
+      {
+        label: 'Ayudas ofrecidas',
+        data: ubicacionesValidas.map(c => conteoAyudasRadar[c]),
+        fill: true,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)'
+      },
+      {
+        label: 'Solicitudes hechas',
+        data: ubicacionesValidas.map(c => conteoSolicitudesRadar[c]),
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Comparativa por Ciudad'
+      }
+    },
+    elements: { line: { borderWidth: 3 } },
+    scales: {
+      r: {
+        beginAtZero: true,
+        suggestedMax: 5
+      }
+    }
+  }
+});
+
+</script>
+
+<!-- Pie de página-->
+<footer class="bg-danger text-white mt-5">
+  <div class="container py-4">
+    <div class="row">
+
+      <div class="col-md-4 mb-3">
+        <h5>Quiénes somos</h5>
+        <p>Somos una red de apoyo comunitario que busca brindar ayuda a quienes más lo necesitan, a través de la solidaridad y el trabajo colectivo.</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Contacto</h5>
+        <p>Email: contacto@apoyocomunitario.org</p>
+        <p>Tel: +57 302 293 8101</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Síguenos</h5>
+        <a href="https://www.facebook.com" class="text-white me-3 text-decoration-none">Facebook</a>
+        <a href="https://www.instagram.com" class="text-white me-3 text-decoration-none">Instagram</a>
+        <a href="https://x.com/?lang=es" class="text-white text-decoration-none">Twitter</a>
+      </div>
+    </div>
+    <hr class="border-light">
+    <p class="text-center mb-0">© 2025 Red de Apoyo Comunitario. Talento Tech. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

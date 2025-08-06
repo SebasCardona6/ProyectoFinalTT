@@ -5,27 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Red de Apoyo Comunitario</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="css/estilos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
   <div class="container">
-    <!-- Botón para abrir menú lateral -->
-    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">
-      ☰
-    </button>
-
-    <!-- Logo + Texto -->
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">☰</button>
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="img/logo.jpg" alt="Logo" class="me-2">
+      <img src="img/logo.jpg" alt="Logo" class="me-2" style="width:40px;height:40px;object-fit:contain">
       UnidosXTi - Red de Apoyo Comunitario
     </a>
-
-    <!-- Menú principal -->
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
@@ -37,7 +29,7 @@
   </div>
 </nav>
 
-<!-- Menú lateral izquierdo (offcanvas) -->
+<!-- Menú lateral -->
 <div class="offcanvas offcanvas-start bg-danger text-white" tabindex="-1" id="menuServicios">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">Ayudas</h5>
@@ -45,96 +37,126 @@
   </div>
   <div class="offcanvas-body">
     <ul class="list-unstyled fs-5">
-      <li class="mb-2">
-        <i class="bi bi-arrow-right"></i>
-        <a class="nav-link d-inline text-white" href="Donaciones.html">Donaciones</a>
-      </li>
-      <li class="mb-2">
-        <i class="bi bi-arrow-right"></i>
-        <a class="nav-link d-inline text-white" href="Alimentos.html">Alimentos</a>
-      </li>
-      <li class="mb-2">
-        <i class="bi bi-arrow-right"></i>
-        <a class="nav-link d-inline text-white" href="Medicamentos.html">Medicamentos</a>
-      </li>
-      <li class="mb-2">
-        <i class="bi bi-arrow-right"></i>
-        <a class="nav-link d-inline text-white" href="Mascotas.html">Mascotas</a>
-      </li>
-      <li class="mb-2">
-        <i class="bi bi-arrow-right"></i>
-        <a class="nav-link d-inline text-white" href="Ubicaciones.html">Ubicaciones</a>
-      </li>
+      <li class="mb-2"><a class="nav-link text-white" href="Donaciones.html">Donaciones</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Alimentos.html">Alimentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Medicamentos.html">Medicamentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Mascotas.html">Mascotas</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Ubicaciones.html">Ubicaciones</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Analisis.html">Análisis Gráfico</a></li>
     </ul>
   </div>
 </div>
 
-<h1>Listado de Ayudas Comunitarias</h1>
+<div class="container my-5">
+  <h1 class="text-center mb-4 text-danger"><i class="bi bi-people-fill"></i> Listado de Ayudas Comunitarias</h1>
 
-<!-- SECCIÓN DE AYUDAS OFRECIDAS -->
-<section>
-  <h2>Ayudas Ofrecidas</h2>
-  <div id="listadoAyudas"></div>
-  <button onclick="borrarAyudas()">Borrar todas las ayudas ofrecidas</button>
-</section>
+  <!-- SECCIÓN DE AYUDAS OFRECIDAS -->
+  <section>
+    <h2 class="text-danger"><i class="bi bi-hand-thumbs-up-fill"></i> Ayudas Ofrecidas</h2>
+    <div id="listadoAyudas"></div>
+    <button onclick="borrarAyudas()" class="btn btn-outline-danger mt-3">
+      <i class="bi bi-trash-fill"></i> Borrar todas las ayudas ofrecidas
+    </button>
+  </section>
 
-<hr>
+  <hr>
 
-<!-- SECCIÓN DE SOLICITUDES -->
-<section>
-  <h2>Solicitudes de Ayuda</h2>
-  <div id="listadoSolicitudes"></div>
-  <button onclick="borrarSolicitudes()">Borrar todas las solicitudes</button>
-</section>
+  <!-- SECCIÓN DE SOLICITUDES -->
+  <section>
+    <h2 class="text-danger"><i class="bi bi-envelope-fill"></i> Solicitudes de Ayuda</h2>
+    <div id="listadoSolicitudes"></div>
+    
+    </button>
+  </section>
+</div>
 
+<!-- Script de renderizado -->
 <script>
-  // Mostrar AYUDAS OFRECIDAS
   const listadoAyudas = document.getElementById('listadoAyudas');
   const ayudas = JSON.parse(localStorage.getItem('ayudas')) || [];
 
   if (ayudas.length === 0) {
-    listadoAyudas.innerHTML = '<p>No hay ayudas ofrecidas registradas aún.</p>';
+    listadoAyudas.innerHTML = '<p class="text-muted">No hay ayudas ofrecidas registradas aún.</p>';
   } else {
     ayudas.forEach((ayuda, index) => {
       const div = document.createElement('div');
+      div.className = "card shadow-sm mb-4 border-secondary";
       div.innerHTML = `
-        <h3>Ayuda #${index + 1}</h3>
-        <p><strong>Nombre:</strong> ${ayuda.nombreF}</p>
-        <p><strong>Cédula:</strong> ${ayuda.cedulaF}</p>
-        <p><strong>Servicio:</strong> ${ayuda.servicioF}</p>
-        <p><strong>Ubicación:</strong> ${ayuda.ubicacionF}</p>
-        <p><strong>Fecha para realizar la ayuda:</strong> ${ayuda.fechaF}
-        <p><strong>Descripción:</strong> ${ayuda.descripcionF}</p>
-        <hr>
+        <div class="card-body">
+          <h5 class="card-title text-danger"><i class="bi bi-hand-thumbs-up"></i> Ayuda #${index + 1}</h5>
+          <p><i class="bi bi-person-fill text-danger"></i> <strong>Nombre:</strong> ${ayuda.nombreF}</p>
+          <p><i class="bi bi-card-text text-danger"></i> <strong>Cédula:</strong> ${ayuda.cedulaF}</p>
+          <p><i class="bi bi-box2-heart text-danger"></i> <strong>Servicio:</strong> ${ayuda.servicioF}</p>
+          <p><i class="bi bi-geo-alt-fill text-danger"></i> <strong>Ubicación:</strong> ${ayuda.ubicacionF}</p>
+          <p><i class="bi bi-calendar-event text-danger"></i> <strong>Fecha:</strong> ${ayuda.fechaF}</p>
+          <p><i class="bi bi-chat-left-text text-danger"></i> <strong>Descripción:</strong> ${ayuda.descripcionF}</p>
+          <button class="btn btn-outline-success btn-sm marcar-ayuda mt-2">
+            <i class="bi bi-check-circle-fill"></i> Marcar como atendida
+          </button>
+        </div>
       `;
       listadoAyudas.appendChild(div);
     });
+
+    setTimeout(() => {
+      document.querySelectorAll('.marcar-ayuda').forEach((btn, idx) => {
+        btn.addEventListener('click', function () {
+          if (confirm('¿Deseas marcar esta ayuda como atendida?')) {
+            ayudas.splice(idx, 1);
+            localStorage.setItem('ayudas', JSON.stringify(ayudas));
+            location.reload();
+          }
+        });
+      });
+    }, 100);
   }
 
-  // MOSTRAR SOLICITUDES
   const listadoSolicitudes = document.getElementById('listadoSolicitudes');
   const solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
 
   if (solicitudes.length === 0) {
-    listadoSolicitudes.innerHTML = '<p>No hay solicitudes registradas aún.</p>';
+    listadoSolicitudes.innerHTML = '<p class="text-muted">No hay solicitudes registradas aún.</p>';
   } else {
     solicitudes.forEach((solicitud, index) => {
       const div = document.createElement('div');
+      div.className = "card shadow-sm mb-4 border-secondary";
       div.innerHTML = `
-        <h3>Solicitud #${index + 1}</h3>
-        <p><strong>Nombre:</strong> ${solicitud.nombreS}</p>
-        <p><strong>Cédula:</strong> ${solicitud.cedulaS}</p>
-        <p><strong>Servicio:</strong> ${solicitud.servicioS}</p>
-        <p><strong>Ubicación:</strong> ${solicitud.ubicacionS}</p>
-        <p><strong>Fecha para recibir la ayuda:</strong> ${solicitud.fechaS}</p>
-        <p><strong>Descripción:</strong> ${solicitud.descripcionS}</p>
-        <hr>
+        <div class="card-body">
+          <h5 class="card-title text-danger"><i class="bi bi-envelope-paper-fill"></i> Solicitud #${index + 1}</h5>
+          <p><i class="bi bi-person-fill text-danger"></i> <strong>Nombre:</strong> ${solicitud.nombreS}</p>
+          <p><i class="bi bi-card-text text-danger"></i> <strong>Cédula:</strong> ${solicitud.cedulaS}</p>
+          <p><i class="bi bi-box2-heart text-danger"></i> <strong>Servicio:</strong> ${solicitud.servicioS}</p>
+          <p><i class="bi bi-geo-alt-fill text-danger"></i> <strong>Ubicación:</strong> ${solicitud.ubicacionS}</p>
+          <p><i class="bi bi-calendar-event text-danger"></i> <strong>Fecha:</strong> ${solicitud.fechaS}</p>
+          <p><i class="bi bi-chat-left-text text-danger"></i> <strong>Descripción:</strong> ${solicitud.descripcionS}</p>
+          <button class="btn btn-outline-success btn-sm marcar-atendida mt-2">
+            <i class="bi bi-check-circle-fill"></i> Marcar como atendida
+          </button>
+        </div>
       `;
       listadoSolicitudes.appendChild(div);
     });
+
+    setTimeout(() => {
+      document.querySelectorAll('.marcar-atendida').forEach((btn, idx) => {
+        btn.addEventListener('click', function () {
+          if (confirm('¿Deseas marcar esta solicitud como atendida?')) {
+            solicitudes.splice(idx, 1);
+            localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+            location.reload();
+          }
+        });
+      });
+    }, 100);
+
+    // Botón de borrar todas las solicitudes
+    const btnBorrarTodas = document.createElement('button');
+    btnBorrarTodas.className = 'btn btn-outline-danger mt-3';
+    btnBorrarTodas.innerHTML = `<i class="bi bi-trash-fill"></i> Borrar todas las solicitudes`;
+    btnBorrarTodas.onclick = borrarSolicitudes;
+    listadoSolicitudes.parentNode.appendChild(btnBorrarTodas);
   }
 
-  // Funciones para borrar
   function borrarAyudas() {
     if (confirm('¿Estás seguro de que deseas borrar todas las ayudas ofrecidas?')) {
       localStorage.removeItem('ayudas');
@@ -153,18 +175,15 @@
 <footer class="bg-danger text-white mt-5">
   <div class="container py-4">
     <div class="row">
-
       <div class="col-md-4 mb-3">
         <h5>Quiénes somos</h5>
         <p>Somos una red de apoyo comunitario que busca brindar ayuda a quienes más lo necesitan, a través de la solidaridad y el trabajo colectivo.</p>
       </div>
-
       <div class="col-md-4 mb-3">
         <h5>Contacto</h5>
         <p>Email: contacto@apoyocomunitario.org</p>
         <p>Tel: +57 302 293 8101</p>
       </div>
-
       <div class="col-md-4 mb-3">
         <h5>Síguenos</h5>
         <a href="https://www.facebook.com" class="text-white me-3 text-decoration-none">Facebook</a>
@@ -177,5 +196,6 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

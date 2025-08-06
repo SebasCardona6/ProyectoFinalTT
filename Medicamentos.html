@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medicamentos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container">
+    <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuServicios">☰</button>
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo.jpg" alt="Logo" class="me-2">
+      Red de Apoyo Comunitario
+    </a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="ofrecerAyuda.html">Ofrecer Ayuda</a></li>
+        <li class="nav-item"><a class="nav-link" href="solicitarAyuda.html">Solicitar Ayuda</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú lateral -->
+<div class="offcanvas offcanvas-start bg-danger text-white" tabindex="-1" id="menuServicios">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Ayudas</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled fs-5">
+      <li class="mb-2"><a class="nav-link text-white" href="Donaciones.html">Donaciones</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Alimentos.html">Alimentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white fw-bold" href="Medicamentos.html">Medicamentos</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Mascotas.html">Mascotas</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Ubicaciones.html">Ubicaciones</a></li>
+      <li class="mb-2"><a class="nav-link text-white" href="Analisis.html">Análisis Gráfico</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container my-5">
+  <h2 class="text-center fw-bold mb-2" style="letter-spacing:1px; font-size:3rem;">
+      Medicamentos solidarios al alcance de todos
+  </h2>
+  <p class="text-center text-muted mb-4" style="font-size:2rem;">
+    Comparte lo que tienes y recibe lo que necesitas. Unidos por la salud de nuestra comunidad.
+  </p>
+
+  <div class="row g-4">
+    <!-- Medicamento 1: Acetaminofén -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/acetaminofen.webp" class="card-img-top" alt="Acetaminofén" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Acetaminofén 500mg</h5>
+          <span class="badge bg-secondary mb-2">Analgésico</span>
+          <p class="card-text small text-muted">Utilizado para aliviar fiebre y dolores leves a moderados. Seguro para adultos y niños mayores de 6 años.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 2: Ibuprofeno -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/ibuprofeno.jpg" class="card-img-top" alt="Ibuprofeno" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Ibuprofeno 400mg</h5>
+          <span class="badge bg-warning text-dark mb-2">Antiinflamatorio</span>
+          <p class="card-text small text-muted">Usado para tratar inflamación, fiebre y dolores menstruales, musculares o articulares.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 3: Omeprazol -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/omeprazol-mk.webp" class="card-img-top" alt="Omeprazol" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Omeprazol 20mg</h5>
+          <span class="badge bg-success mb-2">Protector gástrico</span>
+          <p class="card-text small text-muted">Disminuye la producción de ácido estomacal. Eficaz en casos de reflujo, gastritis o úlceras gástricas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 4: Loratadina -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/loratadina.webp" class="card-img-top" alt="Loratadina" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Loratadina</h5>
+          <span class="badge bg-info text-dark mb-2">Antihistamínico</span>
+          <p class="card-text small text-muted">Usado para aliviar síntomas de alergias como estornudos, picazón y secreción nasal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 5: Amoxicilina -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/amoxicilina.png" class="card-img-top" alt="Amoxicilina" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Amoxicilina</h5>
+          <span class="badge bg-primary mb-2">Antibiótico</span>
+          <p class="card-text small text-muted">Usado para tratar infecciones bacterianas como amigdalitis, bronquitis y neumonía.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 6: Metformina -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/metformina.webp" class="card-img-top" alt="Metformina" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Metformina</h5>
+          <span class="badge bg-dark mb-2">Antidiabético</span>
+          <p class="card-text small text-muted">Utilizada en el tratamiento de la diabetes tipo 2. Ayuda a controlar los niveles de azúcar en sangre.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 7: Salbutamol -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/salbutamol.jpg" class="card-img-top" alt="Salbutamol" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Salbutamol</h5>
+          <span class="badge bg-info text-dark mb-2">Broncodilatador</span>
+          <p class="card-text small text-muted">Utilizado para aliviar síntomas del asma y otras enfermedades respiratorias como EPOC.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 8: Enalapril -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/enalapil.webp" class="card-img-top" alt="Enalapril" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Enalapril</h5>
+          <span class="badge bg-danger mb-2">Antihipertensivo</span>
+          <p class="card-text small text-muted">Medicamento utilizado para tratar la presión arterial alta e insuficiencia cardíaca.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medicamento 9: Ranitidina -->
+    <div class="col-md-4 col-12">
+      <div class="card h-100 shadow-sm d-flex flex-column">
+        <img src="img/ranitidina.png" class="card-img-top" alt="Ranitidina" style="object-fit: contain; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Ranitidina</h5>
+          <span class="badge bg-success mb-2">Antiácido</span>
+          <p class="card-text small text-muted">Utilizado para tratar úlceras estomacales y el reflujo ácido, reduciendo la producción de ácido gástrico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="solicitarAyuda.html" class="btn btn-danger ">
+      🤒 Solicitar Medicamentos
+    </a>
+    <a href="ofrecerAyuda.html" class="btn btn-success  ">
+      💊 Ofrecer Medicamentos
+    </a>
+    </div>
+</div>
+
+<!-- Pie de página-->
+<footer class="bg-danger text-white mt-5">
+  <div class="container py-4">
+    <div class="row">
+
+      <div class="col-md-4 mb-3">
+        <h5>Quiénes somos</h5>
+        <p>Somos una red de apoyo comunitario que busca brindar ayuda a quienes más lo necesitan, a través de la solidaridad y el trabajo colectivo.</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Contacto</h5>
+        <p>Email: contacto@apoyocomunitario.org</p>
+        <p>Tel: +57 302 293 8101</p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h5>Síguenos</h5>
+        <a href="https://www.facebook.com" class="text-white me-3 text-decoration-none">Facebook</a>
+        <a href="https://www.instagram.com" class="text-white me-3 text-decoration-none">Instagram</a>
+        <a href="https://x.com/?lang=es" class="text-white text-decoration-none">Twitter</a>
+      </div>
+    </div>
+    <hr class="border-light">
+    <p class="text-center mb-0">© 2025 Red de Apoyo Comunitario. Talento Tech. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
